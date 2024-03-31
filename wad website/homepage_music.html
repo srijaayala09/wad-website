@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musical Instruments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #d9fa56;
+            color: #f809a8;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f8039e;
+            color: #3cb4fa;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #f0f0f0;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        main {
+            padding: 20px;
+            color: #f8039e
+        }
+        footer {
+            background-color: #d9fa56;
+            color: #f809a8;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        img {
+            float: left; /* Float the image to the left */
+            margin-right: 20px; /* Add some margin to the right of the image */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Musical Instruments Store</h1>
+    </header>
+    <nav>
+        <a href="homepage_music.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="registration.html">Registration</a>
+        <a href="catalogue.html">Catalogue</a>
+    </nav>
+    <main>
+        <img src="instruments.avif" height="500px", width="500px" alt="Musical Instruments">
+        <h2>Welcome to our Musical Instruments Store</h2>
+        <p>Explore our wide selection of musical instruments.</p>
+        <br/>
+        <p onmousedown="funred(this)"  onmouseup="fungreen(this)">Guitar</p>
+        <br/>
+        <p onmousedown="funred(this)"  onmouseup="fungreen(this)">Piano</p>
+        <br/>
+        <p onmousedown="funred(this)"  onmouseup="fungreen(this)">Violon</p>
+        <br/>
+        <p onmousedown="funred(this)"  onmouseup="fungreen(this)">Drums</p>
+    </main>
+    <footer>
+        <p>&copy; 2022 Musical Instruments Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function funred(ele){
+            ele.style.color = 'red'
+        }
+
+
+        function fungreen(ele){
+            ele.style.color = 'green'
+        }
+    </script>
+</body>
+</html>

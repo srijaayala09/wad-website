@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Musical Instruments Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            width: 300px;
+            margin: 50px auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #f8039e;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #f8039e;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #d90371;
+        }
+    </style>
+</head>
+<body>
+    <form id="registrationForm">
+        <h2>Register for Musical Instruments Store</h2>
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required>
+
+        <label for="email">Email Address:</label>
+        <input type="text" id="email" name="email" required>
+
+        <label for="username">Choose a Username:</label>
+        <input type="text" id="username" name="username" required onchange="convertToUppercase(this)">
+
+        <label for="password">Choose a Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <script>
+        function convertToUppercase(input) {
+            input.value = input.value.toUpperCase();
+        }
+
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            var fullname = document.getElementById("fullname").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var username = document.getElementById("username").value.trim();
+            var password = document.getElementById("password").value.trim();
+
+            if (fullname === "" || email === "" || username === "" || password === "") {
+                event.preventDefault();
+                alert("Please fill in all fields");
+            } else {
+                alert("Registered Successfully!");
+            }
+        });
+    </script>
+</body>
+</html>

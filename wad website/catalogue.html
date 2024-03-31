@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musical Instruments Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #d9fa56;
+            color: #f809a8;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f8039e;
+            color: #3cb4fa;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #f0f0f0;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        main {
+            padding: 20px;
+            color: #f8039e;
+        }
+        .item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        img{
+            height: 150px;
+            width:150px;
+        }
+        /* Style for the Add button */
+        .add-button {
+            background-color: #f8039e;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        /* Hover effect for the Add button */
+        .add-button:hover {
+            background-color: #d90371;
+        }
+        /* Style for the Remove button */
+        .remove-button {
+            background-color: #f8039e;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        /* Hover effect for the Remove button */
+        .remove-button:hover {
+            background-color: #d90371;
+        }
+        /* Style for the Checkout button */
+        .checkout-button {
+            background-color: #f8039e;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        /* Hover effect for the Checkout button */
+        .checkout-button:hover {
+            background-color: #d90371;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Musical Instruments Store</h1>
+    </header>
+    <nav>
+        <a href="homepage_music.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="registration.html">Registration</a>
+        <a href="catalogue.html">Catalogue</a>
+    </nav>
+    <main>
+        <div class="item" id="guitar">
+            <img src="guitar.jpg" alt="Guitar">
+            <h2>Guitar</h2>
+            <p>An acoustic guitar is a musical instrument in the guitar family. Price: $200</p>
+            <button class="add-button" onclick="addToCart('guitar')">Add</button>
+        </div>
+        <div class="item" id="piano">
+            <img src="piano.jpg" alt="Piano">
+            <h2>Piano</h2>
+            <p>The piano is an acoustic, stringed musical instrument invented in Italy by Bartolomeo Cristofori around the year 1700. Price: $500</p>
+            <button class="add-button" onclick="addToCart('piano')">Add</button>
+        </div>
+        <div class="item" id="violin">
+            <img src="violon.jpg" alt="Violin">
+            <h2>Violin</h2>
+            <p>The violin, sometimes known as a fiddle, is a wooden chordophone in the violin family. Price: $300</p>
+            <button class="add-button" onclick="addToCart('violin')">Add</button>
+        </div>
+        <div class="item" id="drums">
+            <img src="drums.jpg" alt="Drums">
+            <h2>Drums</h2>
+            <p>A drum kit — also called a drum set, trap set, or simply drums — is a collection of drums and other percussion instruments. Price: $400</p>
+            <button class="add-button" onclick="addToCart('drums')">Add</button>
+        </div>
+
+        <!-- Cart Section -->
+        <h2>Your Cart</h2>
+        <div id="cart"></div>
+        <button class="checkout-button" onclick="checkout()">Checkout</button>
+        <p id="totalAmount"></p>
+    </main>
+
+    <script>
+        function addToCart(itemName) {
+            var item = document.getElementById(itemName);
+            var cartItem = item.cloneNode(true);
+            var addButton = cartItem.querySelector(".add-button");
+            addButton.remove(); // Remove the "Add" button from the cart item
+            
+            // Add a "Remove" button to the cart item
+            var removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.classList.add("remove-button");
+            removeButton.onclick = function() {
+                cartItem.remove(); // Remove the cart item when clicking "Remove" button
+            };
+            cartItem.appendChild(removeButton);
+            
+            document.getElementById("cart").appendChild(cartItem);
+            alert(itemName.charAt(0).toUpperCase() + itemName.slice(1) + " added to cart");
+        }
+
+        function checkout() {
+            var cartItems = document.querySelectorAll("#cart .item");
+            var total = 0;
+            for (var i = 0; i < cartItems.length; i++) {
+                var price = parseFloat(cartItems[i].querySelector("p").textContent.match(/\d+/)[0]);
+                total += price;
+            }
+            var totalAmountElement = document.getElementById("totalAmount");
+            totalAmountElement.textContent = "Total amount to be paid is $" + total.toFixed(2);
+            alert("Total amount to be paid is $" + total.toFixed(2));
+        }
+    </script>
+</body>
+</html>
